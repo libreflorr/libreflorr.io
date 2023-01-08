@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="application-name" content="florrclone.io">
+<meta name="description" content="Battle other teams of flowers to become the #1 team!">
+<meta name="msapplication-TileColor" content="#181818">
+<meta name="theme-color" content="#181818">
+    <title>:D</title>
+    <script src="https://rawgit.com/kawanet/msgpack-lite/master/dist/msgpack.min.js"></script>
+
+    <link href='https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+    <link href="style.css" rel="stylesheet" type="text/css" type='text/css'/>
+  </head>
+  <body>
+    <div id="game">
+        <canvas id="canvas"></canvas>
+        <div class="gui">
+            <div class="chatDiv">
+                <div class="chat-over"></div>
+                <input class="chat" type="text" autocomplete="off" spellcheck="false"><!-- maxlength 200 -->
+            </div>
+            <div class="chat-div">
+                <div class="chat-message">[SERVER]: Welcome! Use Enter To Chat!</div>
+            </div>
+<!--             <div id="petalui">
+                <div class="petal-slot">
+                    <div class="petalcontainer basic common">
+                        <p class="petaltext basic">Basic</p>
+                    </div>
+                </div>
+                <div class="petal-slot">
+                    <div class="petalcontainer basic common">
+                        <p class="petaltext basic">Basic</p>
+                    </div>
+                </div>
+                <div class="petal-slot">
+                    <div class="petalcontainer basic common">
+                        <p class="petaltext basic">Basic</p>
+                    </div>
+                </div>
+                <div class="petal-slot">
+                    <div class="petalcontainer basic common">
+                        <p class="petaltext basic">Basic</p>
+                    </div>
+                </div>
+                <div class="petal-slot">
+                    <div class="petalcontainer basic common">
+                        <p class="petaltext basic">Basic</p>
+                    </div>
+                </div>
+                <div class="petal-slot">
+                    <div class="petalcontainer basic common">
+                        <p class="petaltext basic">Basic</p>
+                    </div>
+                </div>
+                <div class="petal-slot">
+                    <div class="petalcontainer basic common">
+                        <p class="petaltext basic">Basic</p>
+                    </div>
+                </div>
+                <div class="petal-slot">
+                    <div class="petalcontainer basic common">
+                        <p class="petaltext basic">Basic</p>
+                    </div>
+                </div>
+                <div class="petal-slot">
+                    <div class="petalcontainer basic common">
+                        <p class="petaltext basic">Basic</p>
+                    </div>
+                </div>
+                <div class="petal-slot">
+                    <div class="petalcontainer basic common">
+                        <p class="petaltext basic">Basic</p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div id="menu">
+        <p id="title">florr.io</p>
+        <input type="text" id="name" size="10" autocomplete="off" spellcheck="false" maxlength="16">
+    </div>
+    <script src="ref.js"></script>
+    <script src="util.js"></script>
+    <script src="constants.js"></script>
+    <script src="menu.js"></script>
+    <script src="index.js"></script>
+    <script src="input.js"></script>
+    <script src="petal.js"></script>
+    <script src="player.js"></script>
+    <script src="enemy.js"></script>
+    <script src="render.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>
