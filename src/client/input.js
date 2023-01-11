@@ -64,7 +64,7 @@ ref.canvas.addEventListener('mousedown', (e) => {
   } else if (e.button === 2) {
     send({ defend: true });
   }
-  event.preventDefault();
+  e.preventDefault();
 });
 
 ref.canvas.addEventListener('mouseup', (e) => {
@@ -74,7 +74,7 @@ ref.canvas.addEventListener('mouseup', (e) => {
   } else if (e.button === 2) {
     send({ defend: false });
   }
-  event.preventDefault();
+  e.preventDefault();
 });
 
 window.addEventListener("contextmenu", e => e.preventDefault());
