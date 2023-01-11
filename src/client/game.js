@@ -62,8 +62,10 @@ const initGame = (name) => {
 }
 
 function runPlayerMovement() {
-  const angle = Math.atan2(mouse.y - canvas.height / 2, mouse.x - canvas.width / 2);
-  const magnitude = Math.sqrt(((mouse.y - canvas.height / 2) / canvas.height) ** 2 + ((mouse.x - canvas.width / 2) / canvas.width) ** 2);
+  const dx = mouse.x - canvas.width / 2, dy = mouse.y - canvas.height / 2;
+  const angle = Math.atan2(dy, dx);
+  // const magnitude = Math.sqrt((dy / canvas.height) ** 2 + (dx / canvas.width) ** 2);
+  const magnitude = Math.sqrt(dy ** 2 + dx ** 2);
   send([angle, magnitude]);
 }
 

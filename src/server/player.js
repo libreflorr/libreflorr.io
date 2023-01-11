@@ -19,8 +19,8 @@ module.exports = class Player {
     this.magnitude = 0;
     this.xv = 0;
     this.yv = 0;
-    this.fric = 0;
-    this.speed = 3.2;
+    this.fric = 0.8;
+    this.speed = 3.0;
     this.grav = { x: 0, y: 0 };
     this.petals = {};
     this.regen = 6.4;
@@ -45,20 +45,36 @@ module.exports = class Player {
   }
   simulate(dt, arena, players) {
     this.health = Math.min(this.health + this.regen * dt / 1000, 100);
-    if (this.magnitude > 0.1) {
-      this.magnitude = 0.1;
+    this.magnitude /= 100;
+    if (this.magnitude > 1) {
+      this.magnitude = 1;
     }
-    this.xv += Math.cos(this.angle) * this.speed * this.magnitude;
-    this.yv += Math.sin(this.angle) * this.speed * this.magnitude;
+
+    this.speed = 0.3;
+    const tau = 100; // characteristic time in ms
+    this.fric = 1 / tau;
+    let accel = this.fric * this.speed;
+
+    this.xv += Math.cos(this.angle) * this.magnitude * accel * dt;
+    this.yv += Math.sin(this.angle) * this.magnitude * accel * dt;
+
+    this.xv /= 1 + this.fric * dt;
+    this.yv /= 1 + this.fric * dt;
+
     this.x += this.xv * dt;
     this.y += this.yv * dt;
-    this.xv *= Math.pow(this.fric, dt * 30 / 1000);
-    this.yv *= Math.pow(this.fric, dt * 30 / 1000);
+    if (Date.now() % 10 == 0) {
+      // console.log("v", this.xv, this.yv);
+    }
 
-    this.x += this.grav.x * dt;
-    this.y += this.grav.y * dt;
-    this.grav.x *= Math.pow(0.96, dt * 30 / 1000);
-    this.grav.y *= Math.pow(0.96, dt * 30 / 1000);// 0.96
+    // TODO
+    // this.x += this.grav.x * dt;
+    // this.y += this.grav.y * dt;
+
+    // this.grav.x *= Math.pow(0.96, dt * 30 / 1000);
+    // this.grav.y *= Math.pow(0.96, dt * 30 / 1000);// 0.96
+
+    // boundary check
     if (this.x + this.r > arena.w) {
       this.x = arena.w - this.r;
     } else if (this.x - this.r < 0) {
